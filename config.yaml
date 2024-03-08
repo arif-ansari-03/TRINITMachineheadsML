@@ -1,0 +1,9 @@
+path:
+train:
+val:
+
+classes:
+    0: longitudinal_crack
+    1: Transverse_crack
+    2: Aligator_crack
+    4: Pothole
