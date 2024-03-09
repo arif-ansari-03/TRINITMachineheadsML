@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <div>
-        <title>Machineheads</title>
-        <link rel="stylesheet" href="index2kacss.css">
-    </div>
+    
+        
+    
   
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
@@ -56,10 +55,13 @@
     }
   </style>
   <title>Machineheads</title>
+
+  <link rel="stylesheet" href="index2kacss.css">
   
 </head>
 <body>
-
+    <h1>Machineheads</h1>
+    
 <div class="container">
   <input type="file" id="fileInput" accept="image/*, video/*">
   <label for="fileInput">Choose Image or Video</label>
@@ -85,34 +87,36 @@
   var database = firebase.database();
 
   document.getElementById('fileInput').addEventListener('change', function() {
-    var file = this.files[0];
-    var outputField = document.getElementById('output');
+      var file = this.files[0];
+      var outputField = document.getElementById('output');
 
-    if (file) {
-      var fileType = file.type.split('/')[0];
-      if (fileType === 'image' || fileType === 'video') {
-        var storageRef = storage.ref('files/' + file.name);
-        storageRef.put(file).then(function(snapshot) {
-          console.log('Uploaded a blob or file!');
-          storageRef.getDownloadURL().then(function(url) {
-            outputField.value = 'File uploaded: ' + file.name + ' (' + fileType.toUpperCase() + ')';
-            database.ref('files').push({
-              name: file.name,
-              type: fileType,
-              url: url
+      if (file) {
+        var fileType = file.type.split('/')[0];
+        if (fileType === 'image' || fileType === 'video') {
+          var storageRef = storage.ref('files/' + file.name);
+          storageRef.put(file).then(function(snapshot) {
+            console.log('Uploaded a blob or file!');
+            storageRef.getDownloadURL().then(function(url) {
+              outputField.value = 'File uploaded: ' + file.name + ' (' + fileType.toUpperCase() + ')';
+              
+              // Create a download button
+              var downloadBtn = document.createElement('a');
+              downloadBtn.href = url;
+              downloadBtn.download = file.name;
+              downloadBtn.textContent = 'Download';
+              document.body.appendChild(downloadBtn);
+            }).catch(function(error) {
+              console.error('Error generating download URL: ', error);
             });
-          }).catch(function(error) {
-            console.error('Error generating download URL: ', error);
           });
-        });
+        } else {
+          outputField.value = 'Invalid file type. Please upload an image or video.';
+          this.value = '';
+        }
       } else {
-        outputField.value = 'Invalid file type. Please upload an image or video.';
-        this.value = '';
+        outputField.value = '';
       }
-    } else {
-      outputField.value = '';
-    }
-  });
+    });
 </script>
 
 </body>
