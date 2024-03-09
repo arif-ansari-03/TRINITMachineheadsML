@@ -4,9 +4,17 @@ import glob
 
 lut={}
 lut["D00"] = 0
-lut["D10"]       = 1
-lut["D20"]    = 2
-lut["D40"]     = 4
+lut["D0w0"] = 1
+lut["D01"]       = 2
+lut["D10"]    = 3
+lut["D11"]     = 4
+lut["D20"] = 5
+lut["D40"] = 6
+lut["D43"] = 7
+lut["D44"] = 8
+lut["D50"] = 9
+
+
 
 
 def convert_coordinates(size, box):
