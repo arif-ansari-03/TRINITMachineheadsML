@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header {
+    background-color: #10529998; /* Blue background color */
+    color: white; /* White text color */
+    text-align: center; /* Center-align text */
+    padding: 20px 0; /* Add padding top and bottom */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; 
+    margin: 50px;/* Center horizontally */
+  }
+  
+  .header-title {
+    font-weight: bold; /* Make the text bold */
+    margin: 50; /* Remove margin */
+    justify-content: center;
+  }
+  
