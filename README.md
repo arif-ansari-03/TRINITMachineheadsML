@@ -42,7 +42,7 @@ We have included features to take live video stream as well as prerecorded video
 All the code in this section was run on google colab/
 
 ### Dependencies
-zipfile/
+zipfile\
 requests/
 cv2/
 matplotlib.pyplot/
