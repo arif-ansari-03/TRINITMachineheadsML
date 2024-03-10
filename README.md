@@ -27,13 +27,16 @@ We have included features to take live video stream as well as prerecorded video
  
 ## Examples
 ### Predicted
-<img title="a title" alt="Alt text" src="/images/download (2).png">/
+<img title="a title" alt="Alt text" src="/images/download (2).png">
+
 ### Original
-<img title="a title" alt="Alt text" src="/images/download (1).png">/
+<img title="a title" alt="Alt text" src="/images/download (1).png">
+
 ### Predicted
-<img title="a title" alt="Alt text" src="/images/download (5).png">/
+<img title="a title" alt="Alt text" src="/images/download (5).png">
+
 ### Original
-<img title="a title" alt="Alt text" src="/images/download (6).png">/
+<img title="a title" alt="Alt text" src="/images/download (6).png">
 
 ## How we trained our model
 All the code in this section was run on google colab/
@@ -119,7 +122,7 @@ for result in results:
 ```
 
 ## Evaluation of final model on validation data
-<img title="a title" alt="Alt text" src="/images/valid.png">/
+<img title="a title" alt="Alt text" src="/images/valid.png">
 
 
 ### offline_pred.py
