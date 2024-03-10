@@ -39,18 +39,18 @@ We have included features to take live video stream as well as prerecorded video
 <img title="a title" alt="Alt text" src="/images/download (6).png">
 
 ## How we trained our model
-All the code in this section was run on google colab/
+All the code in this section was run on google colab
 
 ### Dependencies
 zipfile\
-requests/
-cv2/
-matplotlib.pyplot/
-glob/
-random/
-os/
-torch with cuda/
-ultralytics/
+requests\
+cv2\
+matplotlib.pyplot\
+glob\
+random\
+os\
+torch with cuda\
+ultralytics\
 
 ### Folder Structure of dataset
 	├── yolov8
