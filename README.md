@@ -23,7 +23,7 @@ We have included features to take live video stream as well as prerecorded video
 	However, our model has limitations. Due to lack of effective firmware, we were unable to train our model sufficiently in time for it to provide higher mean average precision. Despite our time constraint, the model shows promise with a hiking rate of detecting accurately.
 
 ## Link to Videos
-[Click me](https://drive.google.com/drive/folders/1uyLuVr0s6fMYBu4QHxj2qLRpYwWhpyks)/
+[Click me](https://drive.google.com/drive/folders/1uyLuVr0s6fMYBu4QHxj2qLRpYwWhpyks)
  
 ## Examples
 ### Predicted
