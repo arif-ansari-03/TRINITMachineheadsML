@@ -22,6 +22,19 @@ We compared the performance of our local CUDA environment running in tandem with
 We have included features to take live video stream as well as prerecorded videos as input for our model to provide real-time predictions.  Our front-end GUI (developed using a combination of HTML, CSS and JavaScript) enables users to take video input using their webcam to provide prerecorded input for the model. We also allow direct access to our system’s webcam. Our model is hence allowed to analyze the continuous media stream (video) and output a video with bounding boxes annotating the regions of probable road damage.
 	However, our model has limitations. Due to lack of effective firmware, we were unable to train our model sufficiently in time for it to provide higher mean average precision. Despite our time constraint, the model shows promise with a hiking rate of detecting accurately.
 
+## XML to text
+So, for us to use YOLO, we cannot just work with the images and xml files which were given. 
+The xml files had the following important information: - the category of damage like D00, D10 etc. which start with a ‘D’ followed by numbers (or even a 0w0), the values of x-minimum, x-maximum, y-minimum and y-maximum. 
+But YOLO files have the format ‘<Category> <coordinates of center for both x and y in the range of 0-1> <height and width of the bounded box in range 0-1>
+So, the first task was to convert the xml files to yolo format txt files. I used a python script (xml2yolo.py) to do the above. But there was a lookup table on the basis of which the text files were being made, I have made the changes according to the classification categories in the lookup table so it finds all the types we want. The lookup table is a dictionary in which we give each label D00, D10 a numeric key like 0, 1 which will be the classification that will be stored in the txt file at the beginning of each row. 
+To use this properly, just save the python file ‘xml2yolo.py’ in the same folder as all the xml files. Then, just go to the code, and run it. It should start writing new txt files in the yolo format. 
+
+But as I did not already know all the categories of damages, I made another python script (getClasses.py) by learning upon the previous .py file. I went through all the files and wherever I found the  name tag for the category, I stored it in a list for unique category of damages and from all the xml files, I was able to find 10 types of damages.
+
+Once I knew these, I made the lookup table in the xml to yolo txt conversion file. Which again goes through every xml file, fetches the category name, references the lookup table dictionary, gives the category number for yolo txt. Then as the xml files also have height and width of the image, based on that and the x and y max and min coordinates, we derive the other attributes. In each yolo txt file, the no. of rows signifies how many damages were detected in that image. So, this means that if there are no damages, then the yolo txt file will be empty.
+
+Once we got these files, we imported YOLO by using ultralytics. It seemed to be very simple to use. Our model uses yolov8n (Nano). We made a config.yaml file in which we kept the paths for the training, validation and the testing set. It also consists the name of classes. Once we use the model function, yolov8, by itself, takes an image from the path given, then it finds its corresponding same named yolo txt file from the labels folder. Then, trains on the basis of the classes. This first happens on the training set. Then it does the same for the validation set, for which, just like train set, the annotations are given.
+
 ## Link to Videos
 [Click me](https://drive.google.com/drive/folders/1uyLuVr0s6fMYBu4QHxj2qLRpYwWhpyks)
  
