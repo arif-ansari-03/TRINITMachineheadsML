@@ -50,7 +50,7 @@ glob\
 random\
 os\
 torch with cuda\
-ultralytics\
+ultralytics
 
 ### Folder Structure of dataset
 	├── yolov8
