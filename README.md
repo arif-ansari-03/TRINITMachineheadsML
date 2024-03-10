@@ -62,7 +62,7 @@ ultralytics/
 
 
 ### config.yaml
-'''
+```
 %%writefile pothole_v8.yaml
 path: ''
 train: 'train/images'
@@ -84,16 +84,16 @@ names:
 # class names
 names:
   0: 'pothole'
-'''
+```
 
 ### yolov8n training
-'''
+```
 EPOCHS = 5
 !yolo task=detect mode=train model=yolov8n.pt imgsz=1280 data=config.yaml epochs={EPOCHS} batch=8 name=yolov8n_v8_50e
-'''
+```
 
 ### To predict annotation on an image
-'''
+```
 from ultralytics import YOLO
 
 # Load a model
@@ -111,12 +111,12 @@ for result in results:
     result.show()  # display to screen
     result.save(filename='result.jpg') 
 
-'''
+```
 
 ### To validate the model
-'''
+```
 !yolo task=detect mode=val model=runs/detect/yolov8n_v8_50e/weights/best.pt name=yolov8n_eval data=pothole_v8.yaml
-'''
+```
 
 ## Evaluation of final model on validation data
 <img title="a title" alt="Alt text" src="/images/valid.png">/
