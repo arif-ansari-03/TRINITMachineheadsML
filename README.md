@@ -125,10 +125,10 @@ for result in results:
 <img title="a title" alt="Alt text" src="/images/valid.png">
 
 
-### offline_pred.py
+## offline_pred.py
 this file takes two video files (prerecorded) as input, runs the model on them concurrently using the threading library and gives the annotated videos as input. 
 	To run on your system, change the video_file1 and videofile_2 paths to where your videos are stored and the model1, model2 paths to your .pt file locations (i.e. to where the pretrained models are stored). Press the q key to exit the live stream.
-### real_time_pred.py
+## real_time_pred.py
  this file uses the cv2 library to connect a path to the webcam of your system and obtain real-time data.
  	To run on your system, you only need to change the model's path to where your .pt file is stored.
   Press the q key to exit the live stream.
