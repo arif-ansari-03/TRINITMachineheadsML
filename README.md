@@ -30,4 +30,7 @@ We have included features to take live video stream as well as prerecorded video
 ### Predicted
 <img title="a title" alt="Alt text" src="/images/download (5).png">/
 ### Original
-<img title="a title" alt="Alt text" src="/images/download (6).png">
+<img title="a title" alt="Alt text" src="/images/download (6).png">/
+
+##Evaluation of final model on validation data
+<img title="a title" alt="Alt text" src="/images/valid.png">/
