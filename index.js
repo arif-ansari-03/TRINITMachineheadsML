@@ -1,8 +1,6 @@
 const buttons = document.querySelectorAll(".button");
-const startVideoButton = document.querySelector("#startVideo");
-//const startScreenButton = document.querySelector("#startScreen");
-const stopButton = document.querySelector("#stopVideo");
-//const videoList = document.querySelector("#audio-list");
+const startVideoButton = document.querySelector("#startVideo")
+const stopButton = document.querySelector("#stopVideo")
 const videoList = document.querySelector("#video-list");
 
 let mediaRecorder = null;
@@ -13,8 +11,7 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
 }
 
 startVideoButton.addEventListener("click", recordVideo);
-stopButton.addEventListener("click", stopRecording);
-//startScreenButton.addEventListener("click", recordSCreen);
+stopButton.addEventListener("click", stopRecording)
 
 function recordVideo() {
   console.log("record video started");
@@ -25,8 +22,6 @@ function recordVideo() {
     })
     .then((stream) => {
       stopButton.disabled = false;
-      //startAudioButton.disabled = true;
-      //startScreenButton.disabled = true;
 
       mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.ondataavailable = (e) => {
@@ -47,41 +42,12 @@ function recordVideo() {
     });
 }
 
-/*function recordSCreen() {
-  navigator.mediaDevices
-    .getDisplayMedia({
-      mediaSource: "screen",
-    })
-    .then((stream) => {
-      stopButton.disabled = false;
-      startAudioButton.disabled = true;
-      startScreenButton.disabled = true;
-
-      mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.ondataavailable = (e) => {
-        console.log("record screen", e.data);
-        chunks.push(e.data);
-      };
-      mediaRecorder.onstop = (e) => {
-        console.log("record screen stopped");
-        createMediaElement("video", chunks[0].type, videoList);
-      };
-      mediaRecorder.start();
-    })
-    .catch((err) => {
-      alert(`The following error occurred: ${err}`);
-    });
-}
-*/
-// stops audio or video
 function stopRecording() {
   stopButton.disabled = true;
   startVideoButton.disabled = false;
-  //startScreenButton.disabled = false;
   mediaRecorder.stop();
 }
 
-// creates the html element with the file
 function createMediaElement(mediaType, fileType, placeToAdd) {
   const blob = new Blob(chunks, {
     type: fileType,
@@ -98,5 +64,4 @@ function createMediaElement(mediaType, fileType, placeToAdd) {
 
   stopButton.disabled = true;
   startVideoButton.disabled = false;
-  //startScreenButton.disabled = false;
 }
